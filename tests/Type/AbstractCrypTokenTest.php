@@ -107,7 +107,6 @@ class AbstractCrypTokenTest extends TestCase
                 $this->characterPool = $characterPool;
                 $this->tokenLengthInOneByteChars = $tokenLengthInOneByteChars;
                 parent::__construct($crypToken);
-
             }
 
             public function getCharacterPool(): AbstractCharacterPool

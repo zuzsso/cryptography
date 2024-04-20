@@ -26,7 +26,6 @@ class HashServiceTest extends CustomTestCase
         $hash = $this->sut->passwordHash('me testing');
 
         self::assertStringContainsString('$argon2id$v=19$m=65536,t=2,p=', $hash);
-
     }
 
     /**

@@ -6,7 +6,6 @@ namespace Cryptography\Random\Type\CharacterPool;
 
 class AlphanumericCaseSensitive extends AbstractCharacterPool
 {
-
     public function __construct()
     {
         /** @noinspection DuplicatedCode */

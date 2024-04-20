@@ -27,7 +27,7 @@
     "require": {
         "php-di/php-di": "^6.2",
         "ext-json": "*",
-        "zuzsso/di-manifest": "v1.0.0",
+        "zuzsso/di-manifest": "^1.0",
         "ext-sodium": "*"
     },
     "require-dev": {
