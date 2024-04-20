@@ -2,18 +2,24 @@
 
 declare(strict_types=1);
 
-namespace YourProject;
+namespace Cryptography;
 
+use Cryptography\Hash\Service\HashService;
+use Cryptography\Hash\UseCase\GenerateStringHash;
+use Cryptography\Hash\UseCase\PasswordHash;
+use Cryptography\Hash\UseCase\PasswordVerify;
 use DiManifest\AbstractDependencyInjection;
-use YourProject\HelloWorld\HelloWorldDiDefinitions;
+
+use function DI\autowire;
 
 class DependencyInjectionManifest extends AbstractDependencyInjection
 {
     public static function getDependencies(): array
     {
-        return array_merge(
-            HelloWorldDiDefinitions::getDependencies(),
-            // Add any other dependency definitions according to php-di/php-di, that need to be published
-        );
+        return [
+            GenerateStringHash::class => autowire(HashService::class),
+            PasswordHash::class => autowire(HashService::class),
+            PasswordVerify::class => autowire(HashService::class)
+        ];
     }
 }
