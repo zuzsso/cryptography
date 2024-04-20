@@ -289,7 +289,7 @@
         },
         {
             "name": "zuzsso/di-manifest",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zuzsso/di-manifest.git",
@@ -329,7 +329,7 @@
             ],
             "description": "Common shareable functionality",
             "support": {
-                "source": "https://github.com/zuzsso/di-manifest/tree/v1.0.0",
+                "source": "https://github.com/zuzsso/di-manifest/tree/v1.0.1",
                 "issues": "https://github.com/zuzsso/di-manifest/issues"
             },
             "time": "2024-04-19T23:35:40+00:00"
@@ -4165,5 +4165,5 @@
     "platform-overrides": {
         "php": "7.4.28"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.6.0"
 }
