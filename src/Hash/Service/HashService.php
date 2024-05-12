@@ -40,8 +40,49 @@ class HashService implements PasswordHash, PasswordVerify, GenerateStringHash
         }
     }
 
+    /**
+     * @inheritDoc
+     */
     public function useSha256HexOutput(string $clearTextString): string
     {
-        return hash('sha256', $clearTextString);
+        return $this->hashWithParameters($clearTextString, 'sha256', false);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function useSha256BinaryOutput(string $clearTextString): string
+    {
+        return $this->hashWithParameters($clearTextString, 'sha256', true);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function useCrc32cHexOutput(string $clearTextString): string
+    {
+        return $this->hashWithParameters($clearTextString, 'crc32c', false);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function useCrc32cbinaryOutput(string $clearTextString): string
+    {
+        return $this->hashWithParameters($clearTextString, 'crc32c', true);
+    }
+
+    /**
+     * @throws HashServiceUnmanagedException
+     */
+    private function hashWithParameters(string $digest, string $algo, bool $binary): string
+    {
+        $result = hash($algo, $digest, $binary);
+
+        if ($result === false) {
+            throw new HashServiceUnmanagedException('Could not create hash');
+        }
+
+        return $result;
     }
 }
