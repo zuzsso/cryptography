@@ -6,11 +6,11 @@ namespace Cryptography\Tests\Type;
 
 use Cryptography\Random\Exception\InadequateTokenLengthException;
 use Cryptography\Random\Exception\TokenNotCompatibleWithCharacterPoolException;
-use Cryptography\Random\Type\AbstractCrypToken;
 use Cryptography\Random\Type\CharacterPool\AbstractCharacterPool;
 use Cryptography\Random\Type\CharacterPool\AlphanumericCaseSensitive;
 use Cryptography\Random\Type\CharacterPool\HexadecimalLowerCaseCharacterPool;
 use Cryptography\Random\Type\CharacterPool\HexadecimalUpperCaseCharacterPool;
+use Cryptography\Random\Type\CrypToken\AbstractFixedLengthCrypToken;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
@@ -91,8 +91,8 @@ class AbstractCrypTokenTest extends TestCase
         AbstractCharacterPool $characterPool,
         int $tokenLengthInOneByteChars,
         ?string $token
-    ): AbstractCrypToken {
-        return new class ($characterPool, $tokenLengthInOneByteChars, $token) extends AbstractCrypToken {
+    ): AbstractFixedLengthCrypToken {
+        return new class ($characterPool, $tokenLengthInOneByteChars, $token) extends AbstractFixedLengthCrypToken {
             private int $tokenLengthInOneByteChars;
             private AbstractCharacterPool $characterPool;
 
@@ -114,7 +114,7 @@ class AbstractCrypTokenTest extends TestCase
                 return $this->characterPool;
             }
 
-            public function getTokenLengthInOneByteChars(): int
+            public function getExpectedTokenLengthInOneByteChars(): int
             {
                 return $this->tokenLengthInOneByteChars;
             }

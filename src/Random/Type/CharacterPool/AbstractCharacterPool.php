@@ -27,17 +27,17 @@ abstract class AbstractCharacterPool
         $this->characterPool[] = $char;
     }
 
-    public function characterPoolSize(): int
+    final public function characterPoolSize(): int
     {
         return count($this->characterPool);
     }
 
-    public function getCharacterPoolAsSingleString(): string
+    final public function getCharacterPoolAsSingleString(): string
     {
         return implode('', $this->characterPool);
     }
 
-    public function getCharAt(int $zeroBasedPosition): string
+    final public function getCharAt(int $zeroBasedPosition): string
     {
         $poolSize = $this->characterPoolSize();
         $upperLimit = $poolSize - 1;
@@ -48,7 +48,7 @@ abstract class AbstractCharacterPool
         return $this->characterPool[$zeroBasedPosition];
     }
 
-    public function checkStringIsCompatibleWithCharacterPool(string $s): bool
+    final public function checkStringIsCompatibleWithCharacterPool(string $s): bool
     {
         $characterPoolOneLine = $this->getCharacterPoolAsSingleString();
         $stringLengh = strlen($s);
@@ -62,5 +62,14 @@ abstract class AbstractCharacterPool
         }
 
         return true;
+    }
+
+    final public function charInCharacterPool(string $char): bool
+    {
+        if (strlen($char) > 1) {
+            return false;
+        }
+
+        return in_array($char, $this->characterPool, true);
     }
 }
