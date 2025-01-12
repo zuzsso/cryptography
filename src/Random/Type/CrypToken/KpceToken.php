@@ -28,4 +28,12 @@ class KpceToken extends AbstractVariableLengthCrypToken
     {
         return 128;
     }
+
+    public function getCryptokenAsUrlSafeSha256CodeChallenge(): string {
+        $temp = $this->getCryptokenAsString();
+
+        $codeChallenge = base64_encode(hash('sha256', $temp, true));
+
+        return rtrim(strtr($codeChallenge, '+/', '-_'), '=');
+    }
 }
